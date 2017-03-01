@@ -15,11 +15,15 @@ app = Flask(__name__)
 #
 # rooms = mongo.db.rooms
 
-db = TinyDB('room_data.json')
+db = TinyDB('C:\\Users\\busmic1206\\RoomSchedule\\data\\room_data.json ')
 
 # @app.route('/')
 # def hello_world():
 #     return 'Hello World!'
+
+@app.route('/')
+def index():
+    return render_template('room_table.html')
 
 @app.route('/rooms', methods=['GET'])
 def get_rooms():
