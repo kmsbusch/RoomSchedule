@@ -1,19 +1,21 @@
+from tinydb import TinyDB, Query
 from flask import Flask, jsonify, render_template
-from flask.ext.pymongo import PyMongo
+#from flask.ext.pymongo import PyMongo
 
 # client = MongoClient('localhost:27017')
 
 # db = client.RoomSchedule
 
 
-
+# http://webdesignfromscratch.com/html-css/datasheet/
 
 app = Flask(__name__)
 
-mongo = PyMongo(app)
-
+# mongo = PyMongo(app)
+#
 # rooms = mongo.db.rooms
 
+db = TinyDB('room_data.json')
 
 # @app.route('/')
 # def hello_world():
@@ -21,7 +23,7 @@ mongo = PyMongo(app)
 
 @app.route('/rooms', methods=['GET'])
 def get_rooms():
-    data = mongo.db.rooms.find_one()
+    data = db.all()
     # list_data = [d for d in data]
     return render_template('template.html', data=data)
 
