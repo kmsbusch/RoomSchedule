@@ -5,27 +5,27 @@
     <title>Pick your poison:</title>
 </head>
 <body>
-<form id = "room_choice" name = "room_form" action="/" method="POST">
-Room number:
-    <select name="rooms" id="rooms" size="1" >
-  <option value="414">414</option>
-  <option value="415">415</option>
-  <option value="416">416</option>
-  <option value="417">417</option>
-</select>
-<p></p>
-Quarter number:  
-    <select name="quarters" id="quarters" size="1" >
-  <option value="414">414</option>
-  <option value="415">415</option>
-  <option value="416">416</option>
-  <option value="417">417</option>
-</select>
+<form id="room_choice" name="room_form" action="/get_schedule" method="POST">
+    Room number:
+    <select name="rooms" id="rooms" size="1">
+        <option value="414">414</option>
+        <option value="415">415</option>
+        <option value="416">416</option>
+        <option value="417">417</option>
+    </select>
+    <p></p>
+    Quarter number:
+    <select name="quarters" id="quarters" size="1">
+        <option value="1701">1701</option>
+        <option value="1704">1704</option>
+        <option value="1707">1707</option>
+        <option value="1710">1710</option>
+    </select>
 
     <div class="form_button">
-	<input value="Submit" type="button">
-</div>
-    </form>
+        <input value="Submit" type="submit">
+    </div>
+</form>
 
 </body>
 </html>
