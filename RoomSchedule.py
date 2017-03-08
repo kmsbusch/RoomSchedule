@@ -39,8 +39,8 @@ default_room_data = {
         '7:00':['']*6,
         '7:30':['']*6,
         '8:00':['']*6,
-        '9:00':['']*6,
-        '10:00':['']*6
+        '9:01':['']*6,
+        '10:01':['']*6
     }
 }
 
@@ -53,7 +53,7 @@ def get_schedule():
     Room = Query()
     room = request.form.get('rooms')
     quarters = request.form.get('quarters')
-    data = db.search(Room.room == room and Room.quarter == quarters)
+    data = db.search(Room.number == room and Room.quarter == quarters)
     return render_template('room_table.html', data=data)
 
 @app.route('/rooms', methods=['GET'])

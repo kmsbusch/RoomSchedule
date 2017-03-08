@@ -8,16 +8,108 @@
 
 </head>
 <body>
-{#<table>#}
-{#{% for key, value in data['times'].items() %}#}
-{#   <tr>#}
-{#        <th> {{ key }} </th>#}
-{#       {% for time in value %}#}
-{#        <td> {{ time }} </td>#}
-{#           {% endfor %}#}
-{#   </tr>#}
+<table border = 1>
+{#{% for key, value in data[0]['times'].items() %}#}
+    <th><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Saturday</td></th>
+   <tr>
+        <th> 9:00 </th>
+       {% for time in data[0]['times']['9:00'] %}
+        <td> <input type="text" id="time{{ loop.index + 6}}" name="time{{ loop.index }}" value={{ time }}> </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 10:00 </th>
+       {% for time in data[0]['times']['10:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 11:00 </th>
+       {% for time in data[0]['times']['11:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 12:00 </th>
+       {% for time in data[0]['times']['12:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 1:00 </th>
+       {% for time in data[0]['times']['1:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 2:00 </th>
+       {% for time in data[0]['times']['2:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 2:30 </th>
+       {% for time in data[0]['times']['2:30'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 3:00 </th>
+       {% for time in data[0]['times']['3:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 4:00 </th>
+       {% for time in data[0]['times']['4:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 5:30 </th>
+       {% for time in data[0]['times']['5:30'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 6:00 </th>
+       {% for time in data[0]['times']['6:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 7:00 </th>
+       {% for time in data[0]['times']['7:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 7:30 </th>
+       {% for time in data[0]['times']['7:30'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 8:00 </th>
+       {% for time in data[0]['times']['8:00'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 9:00 </th>
+       {% for time in data[0]['times']['9:01'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+   <tr>
+        <th> 10:00 </th>
+       {% for time in data[0]['times']['10:01'] %}
+        <td> {{ time }} </td>
+           {% endfor %}
+   </tr>
+
 {#{% endfor %}#}
-{#</table>#}
-{{ data['times']['5:30'] }}
+</table>
+{#{{ data[0]['times']['5:30'] }}#}
 </body>
 </html>
