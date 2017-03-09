@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/templates/datasheet.css">
+    <link rel="stylesheet" type="text/css" href="templates/datasheet.css">
     <title>Room Schedule</title>
 
 
 </head>
 <body>
 <form id="room_update" name="room_update" action="/update_schedule" method="POST">
-    Room: <textarea id="room" name="room" rows="1" cols="10" > {{ data[0]['number'] }} </textarea>
-    Quarter: <textarea id="quarter" name="quarter" rows="1" cols="10"  > {{ data[0]['quarter'] }}</textarea>
+    Room: <textarea id="room" name="room" rows="1" cols="10" > {{ data[0]['number']}} </textarea>
+    Quarter: <textarea id="quarter" name="quarter" rows="1" cols="10"  > {{ data[0]['quarter']}}</textarea>
 <br><br>
 <table id="schedule" name="schedule" border = 1>
 {#{% for key, value in data[0]['times'].items() %}#}

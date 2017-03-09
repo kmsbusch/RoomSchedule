@@ -44,37 +44,54 @@ default_room_data = {
     }
 }
 
+
 @app.route('/')
 def index():
     return render_template('choose_room.html')
+
 
 @app.route('/get_schedule', methods=['POST'])
 def get_schedule():
     Room = Query()
     room = request.form.get('rooms')
     quarters = request.form.get('quarters')
-    data = db.search(Room.number == room and Room.quarter == quarters)
+    data = db.search((Room.number == room) & (Room.quarter == quarters))
+    if len(data) == 0:
+        data = default_room_data
+        data['number'] = room
+        data['quarter'] = quarters
     return render_template('room_table.html', data=data)
+
 
 @app.route('/update_schedule', methods=['POST'])
 def update_schedule():
     Room = Query()
     form = request.form.to_dict()
-    schedule = db.search(Room.number == form['room'] and Room.quarter == form['quarter'])
-    if len(schedule) == 0:  #construct a new one
+    # schedule = db.search((Room.number == form['room'].strip()) & (Room.quarter == form['quarter'].strip()))
+    if db.count((Room.number == form['room'].strip()) & (Room.quarter == form['quarter'].strip())) == 0:  # construct a new one
         schedule = default_room_data
-        schedule['number'] = form['room']
-        schedule['quarter'] = form['quarter']
+        schedule['number'] = form['room'].strip()
+        schedule['quarter'] = form['quarter'].strip()
         del(form['room'])
         del(form['quarter'])
         for key, value in form.items():
             classtime = key[0:len(key)-1]
-            day = int(key[-1])
+            day = int(key[-1]) - 1
             schedule['times'][classtime][day] = value
         db.insert(schedule)
-    else:
-        pass
+    else:  # Need to update existing record
+        room = form['room'].strip()
+        quarter = form['quarter'].strip()
+        schedule = db.get((Room.number == room) & (Room.quarter == quarter))
+        del (form['room'])
+        del (form['quarter'])
+        for key, value in form.items():
+            classtime = key[0:len(key)-1]
+            day = int(key[-1]) - 1
+            schedule['times'][classtime][day] = value
+        db.update(schedule, (Room.number == room) & (Room.quarter == quarter))
     return render_template('choose_room.html')
+
 
 @app.route('/rooms', methods=['GET'])
 def get_rooms():
