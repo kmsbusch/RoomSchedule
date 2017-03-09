@@ -8,108 +8,117 @@
 
 </head>
 <body>
-<table border = 1>
+<form id="room_update" name="room_update" action="/update_schedule" method="POST">
+    Room: <textarea id="room" name="room" rows="1" cols="10" > {{ data[0]['number'] }} </textarea>
+    Quarter: <textarea id="quarter" name="quarter" rows="1" cols="10"  > {{ data[0]['quarter'] }}</textarea>
+<br><br>
+<table id="schedule" name="schedule" border = 1>
 {#{% for key, value in data[0]['times'].items() %}#}
     <th><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Saturday</td></th>
    <tr>
         <th> 9:00 </th>
        {% for time in data[0]['times']['9:00'] %}
-        <td> <input type="text" id="time{{ loop.index + 6}}" name="time{{ loop.index }}" value={{ time }}> </td>
+        <td> <input type="text" id="9:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }} > </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 10:00 </th>
        {% for time in data[0]['times']['10:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="10:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 11:00 </th>
        {% for time in data[0]['times']['11:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="11:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 12:00 </th>
        {% for time in data[0]['times']['12:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="12:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 1:00 </th>
        {% for time in data[0]['times']['1:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="1:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 2:00 </th>
        {% for time in data[0]['times']['2:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="2:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 2:30 </th>
        {% for time in data[0]['times']['2:30'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="2:30{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 3:00 </th>
        {% for time in data[0]['times']['3:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="3:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 4:00 </th>
        {% for time in data[0]['times']['4:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="4:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 5:30 </th>
        {% for time in data[0]['times']['5:30'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="5:30{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 6:00 </th>
        {% for time in data[0]['times']['6:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="6:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 7:00 </th>
        {% for time in data[0]['times']['7:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="7:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 7:30 </th>
        {% for time in data[0]['times']['7:30'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="7:30{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 8:00 </th>
        {% for time in data[0]['times']['8:00'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="8:00{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 9:00 </th>
        {% for time in data[0]['times']['9:01'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="9:01{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
    <tr>
         <th> 10:00 </th>
        {% for time in data[0]['times']['10:01'] %}
-        <td> {{ time }} </td>
+        <td> <input type="text" id="10:01{{ loop.index }}" onChange="this.name=this.id;" value={{ time }}> </td>
            {% endfor %}
    </tr>
 
 {#{% endfor %}#}
 </table>
-{#{{ data[0]['times']['5:30'] }}#}
+    <div class="form_button">
+        <input value="Submit" type="submit">
+    </div>
+
+</form>
+
 </body>
 </html>

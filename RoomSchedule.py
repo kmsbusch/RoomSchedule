@@ -15,7 +15,7 @@ app = Flask(__name__)
 #
 # rooms = mongo.db.rooms
 
-db = TinyDB('C:\\Users\\busmic1206\\RoomSchedule\\data\\room_data.json ')
+db = TinyDB('data/room_data.json')
 
 # @app.route('/')
 # def hello_world():
@@ -55,6 +55,26 @@ def get_schedule():
     quarters = request.form.get('quarters')
     data = db.search(Room.number == room and Room.quarter == quarters)
     return render_template('room_table.html', data=data)
+
+@app.route('/update_schedule', methods=['POST'])
+def update_schedule():
+    Room = Query()
+    form = request.form.to_dict()
+    schedule = db.search(Room.number == form['room'] and Room.quarter == form['quarter'])
+    if len(schedule) == 0:  #construct a new one
+        schedule = default_room_data
+        schedule['number'] = form['room']
+        schedule['quarter'] = form['quarter']
+        del(form['room'])
+        del(form['quarter'])
+        for key, value in form.items():
+            classtime = key[0:len(key)-1]
+            day = int(key[-1])
+            schedule['times'][classtime][day] = value
+        db.insert(schedule)
+    else:
+        pass
+    return render_template('choose_room.html')
 
 @app.route('/rooms', methods=['GET'])
 def get_rooms():
